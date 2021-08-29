@@ -12,5 +12,144 @@
     />
     <title>Mimi Keel -- FishEye</title>
   </head>
-  <body></body>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <a href="index.html" title="FishEye">
+          <img class="logo__fe" src="img/logo.png" alt="FishEye" />
+        </a>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="mainWrap">
+        <div class="banner">
+          <!-- BANNIERE PHOTOGRAPHE -->
+          <div class="userPage">
+            <h1>Mimi Keel</h1>
+            <div class="userPage--description">
+              <h3>London, UK</h3>
+              <span class="userPage__citation"
+                >Voir le beau dans le quotidien</span
+              >
+            </div>
+            <div class="userPage__tag">
+              <button class="contentTraveller__Tag">#Portrait</button>
+              <button class="contentTraveller__Tag">#Events</button>
+              <button class="contentTraveller__Tag">#Travel</button>
+              <button class="contentTraveller__Tag">#Animals</button>
+            </div>
+          </div>
+          <div class="userPage__contact">
+            <button class="openContact">Contactez-moi</button>
+          </div>
+          <div class="userPage__img">
+            <img
+              class="user__img"
+              src="img/Mimi/Portrait_Nora.jpg"
+              alt="MimiKeel"
+            />
+          </div>
+        </div>
+        <div class="sortBy">
+          <span class="sortBy__text">Trier par</span>
+          <select name="sort" id="sortByList">
+            <option value="popular">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Animals_Rainbow.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Travel_Lonesome.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Event_BenevidesWedding.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Event_PintoWedding.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Event_SeasideWedding.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Portrait_Background.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Portrait_Nora.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Portrait_Wednesday.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <div class="photoSection">
+          <div class="photo">
+            <img
+              src="img/Mimi/Travel_HillsideColor.jpg"
+              onclick="openModal();currentSlide(1)"
+              class="imgMin"
+            />
+          </div>
+        </div>
+        <video width="320" height="240" controls>
+          <source
+            src="img/Mimi/Animals_Wild_Horses_in_the_mountains.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </main>
+  </body>
 </html>
