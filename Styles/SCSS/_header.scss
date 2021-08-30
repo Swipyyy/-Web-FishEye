@@ -1,11 +1,19 @@
 header {
-  padding-top: 1.3rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  align-items: center;
 }
 
 .logo {
-  display: flex;
-
+  height: 15%;
+  width: 15%;
   &__fe {
-    height: 70%;
+    height: 100%;
+    width: 100%;
   }
 }
