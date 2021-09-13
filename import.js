@@ -16,7 +16,7 @@ function fetchData() {
                 <img
                   class="userImg__mimi"
                   src="../img/Photographers ID Photos/${user.portrait}"
-                  alt="MimiKeel"
+                  alt="${user.name}"
                 />
               </div>
               <div class="user__name">
