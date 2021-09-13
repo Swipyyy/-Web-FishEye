@@ -1,3 +1,3 @@
 import * as data from "/data/data.json";
-const test = data.name;
+const test = data.id;
 console.log(test);
