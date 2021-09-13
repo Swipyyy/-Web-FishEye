@@ -12,17 +12,38 @@
   text-align: center;
   width: 358px;
 
-  &--profile {
+  &__name {
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   &--description {
-    padding-bottom: 1rem;
+    flex-direction: column;
   }
 
   &--tag {
     padding-bottom: 3rem;
+  }
+
+  &__city {
+    padding-bottom: 0.3rem;
+  }
+
+  &__citation {
+    font-weight: 400;
+    line-height: 13, 02px;
+    font-size: 10px;
+    text-align: center;
+    padding-bottom: 0.3rem;
+  }
+
+  &__price {
+    color: $grey;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11, 72px;
+    text-align: center;
+    padding-bottom: 0.3rem;
   }
 }
 
@@ -37,7 +58,6 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     object-position: center 60%;
-    margin-bottom: 2rem;
   }
 
   &__ellie {
