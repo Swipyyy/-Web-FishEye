@@ -1,0 +1,125 @@
+.userWrap {
+  flex-direction: row;
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  background-color: $softGrey;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.banner h1 {
+  color: $orange;
+  font-size: 64px;
+  line-height: 83px;
+}
+
+.banner h3 {
+  font-size: 24px;
+  line-height: 31px;
+  text-align: start;
+  padding-bottom: 1rem;
+}
+
+.userPage {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  &--detail {
+    flex-direction: column;
+  }
+  &--contact {
+    padding-left: 4rem;
+    padding-top: 0.5rem;
+  }
+  &--description {
+    text-align: start;
+  }
+  &__citation {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    color: #525252;
+  }
+  &__tag {
+    padding-top: 1rem;
+  }
+}
+
+.userDetailImg {
+  align-self: flex-end;
+  &__img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    object-position: center 60%;
+  }
+}
+
+.photoSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.imgMin {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.photo {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.userHeader {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+  padding-left: 6rem;
+  padding-right: 3rem;
+  align-items: center;
+}
+
+.picDescription {
+  color: $bordeaux;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.sortBy {
+  padding-top: 3rem;
+  &__text {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 700;
+  }
+}
+
+.tri {
+  border: #777 1px solid;
+  margin: 0 0 1.5em 0;
+  overflow: hidden;
+  background-color: $bordeaux;
+  color: white;
+  border-radius: 5px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}

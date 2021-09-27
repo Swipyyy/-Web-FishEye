@@ -9,3 +9,16 @@
     @include colorTag;
   }
 }
+
+.openContact {
+  background-color: $bordeaux;
+  color: white;
+  border-radius: 5px;
+  border-style: none;
+  width: 170px;
+  height: 65px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 26px;
+  font-weight: 500;
+}

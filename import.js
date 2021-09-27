@@ -1,5 +1,5 @@
 function fetchData() {
-  fetch("./data/FishEyeData.json")
+  fetch(myRequest)
     .then((response) => {
       if (!response.ok) {
         throw Error("ERROR");
@@ -11,10 +11,10 @@ function fetchData() {
         .map((user) => {
           return `<div class="user">
           <div class="user--profile">
-            <div class="link">
+            <a class="link" id="${user.id}" href="test.html?id=${user.id}"">
               <div class="userImg">
                 <img
-                  class="userImg__mimi"
+                  class="userImg__img"
                   src="../img/Photographers ID Photos/${user.portrait}"
                   alt="${user.name}"
                 />
@@ -22,7 +22,7 @@ function fetchData() {
               <div class="user__name">
                 <h2>${user.name}</h2>
               </div>
-            </div>
+            </a>
           </div>
           <div class="user--description">
             <h3 class="user__city">${user.country}</h3>
@@ -43,5 +43,4 @@ function fetchData() {
       console.log(error);
     });
 }
-
 fetchData();
