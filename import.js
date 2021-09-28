@@ -1,3 +1,4 @@
+// CREATE MAIN PAGE WITH FETCH (JSON)
 function fetchData() {
   fetch(myRequest)
     .then((response) => {
@@ -7,8 +8,9 @@ function fetchData() {
       return response.json();
     })
     .then((data) => {
-      const html = data.photographers
+      const html = data.photographers // SEARCH DATA ON JSON
         .map((user) => {
+          // RETURN AND INJECT JTML
           return `<div class="user">
           <div class="user--profile">
             <a class="link" id="${user.id}" href="test.html?id=${user.id}"">
@@ -32,7 +34,7 @@ function fetchData() {
           <div class="user--tag">
             <button class="navigation__tag">${user.tags}</button>
           </div>
-        </div>`;
+    </div>`;
         })
         .join("");
       document
@@ -40,7 +42,8 @@ function fetchData() {
         .insertAdjacentHTML("afterbegin", html);
     })
     .catch((error) => {
+      // ERROR OPTION
       console.log(error);
     });
 }
-fetchData();
+fetchData(); // EXECUTE

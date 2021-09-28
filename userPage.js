@@ -1,94 +1,103 @@
-// RECHERCHE DE L'ID
+// SEARCH ID
 
 var userUrl = window.location.search;
 const urlParams = new URLSearchParams(userUrl);
 const idUser = urlParams.get("id");
 
-// IMPORT DES DONNEES JSON
+// IMPORT JSON - FETCH
 
-rcq.then((response) => {
-  console.log(response);
+function importUser() {
+  rcq.then((response) => {
+    console.log(response);
 
-  const userData = response.json();
-  console.log(userData);
+    const userData = response.json();
+    console.log(userData);
 
-  userData.then((utilisateur) => {
-    const userr = utilisateur.photographers;
-    console.log(userr);
-    for (let i = 0; userr[i]; i++) {
-      if (userr[i].id == idUser) {
-        document.getElementById("banner").innerHTML = `
-        <!-- BANNIERE PHOTOGRAPHE -->
-        <div class="userPage">
-          <div class="userPage--detail">
-            <h1>${userr[i].name}</h1>
-            <div class="userPage--description">
-              <h3>${userr[i].city}, ${userr[i].country}</h3>
-              <span class="userPage__citation"
-                >${userr[i].tagline}</span
-              >
-            </div>
-            <div class="userPage__tag">
-              <button class="navigation__tag">#${userr[i].tags}</button>
-            </div>
-          </div>
-          <div class="userPage--contact">
-            <button class="openContact">Contactez-moi</button>
-          </div>
-        </div>
-        <div class="userDetailImg">
-          <img
-            class="userDetailImg__img"
-            src="img/Photographers ID Photos/${userr[i].portrait}"
-            alt="MimiKeel"
-          />
-        </div>`;
-        document.getElementById("sortBy").innerHTML = `<div class="sortBy">
-        <span class="sortBy__text">Trier par</span>
-        <select class="tri" name="sort" id="sortByList">
-          <option value="popular">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
-      </div>`;
-      }
-    }
-    const medias = utilisateur.media;
-    for (let i = 0; medias[i]; i++) {
-      if (medias[i].photographerId == idUser) {
-        if (medias[i].image) {
-          document.getElementById("photoSection").insertAdjacentHTML(
-            "afterbegin",
-            `<div class="photo">
-        <img
-          src="img/img/${medias[i].image}"
-          onclick="openModal();currentSlide(1)"
-          class="imgMin"
-        />
-        <div class="footerPhoto">
-          <p class="picDescription">${medias[i].title}</p>
-        </div>
-      </div>`
-          );
+    userData
+      .then((utilisateur) => {
+        // CREATE PAGE WITH MEDIAS
+        const userr = utilisateur.photographers; // SEARCH PHOTOGRAPHERS ON JSON
+        console.log(userr);
+
+        for (let i = 0; userr[i]; i++) {
+          if (userr[i].id == idUser) {
+            injectUserBanner(userr, i); // INJECT HTML (see JS file)
+            injectUserFilter();
+          }
         }
-        if (medias[i].video) {
-          document.getElementById("photoSection").insertAdjacentHTML(
-            "beforeend",
-            `<div class="video">
-            <video controls>
-            <source
-              src="img/videos/${medias[i].video}"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <div class="footerPhoto">
-          <p class="picDescription">${medias[i].title}</p>
-        </div>
-        </div>`
-          );
+
+        const medias = utilisateur.media; // SEARCH MEDIAS ON JSON
+        medias.sort((a, b) => {
+          return a.likes - b.likes;
+        });
+        for (let i = 0; medias[i]; i++) {
+          if (medias[i].photographerId == idUser) {
+            if (medias[i].image) {
+              injectPics(medias, i); // INJECT PICS
+            }
+            if (medias[i].video) {
+              injectVideos(medias, i); // INJECTS VIDEOS
+            }
+          }
         }
-      }
-    }
+        return utilisateur;
+      })
+
+      .then((utilisateur) => {
+        // CREATE FILTERS
+        const medias = utilisateur.media;
+        let selectItem = document.querySelector("#sortByList");
+        selectItem.addEventListener("change", function () {
+          var index = selectItem.selectedIndex;
+          console.log(index);
+          document.getElementById("photoSection").innerHTML = "";
+          if (index === 2) {
+            medias.sort((b, a) => {
+              return a.title.localeCompare(b.title); // TITLE FILTER
+            });
+            for (let i = 0; medias[i]; i++) {
+              if (medias[i].photographerId == idUser) {
+                if (medias[i].image) {
+                  injectPics(medias, i);
+                }
+                if (medias[i].video) {
+                  injectVideos(medias, i);
+                }
+              }
+            }
+          }
+          if (index === 1) {
+            medias.sort((a, b) => {
+              return new Date(a.date) - new Date(b.date); // DATE FILTER
+            });
+            for (let i = 0; medias[i]; i++) {
+              if (medias[i].photographerId == idUser) {
+                if (medias[i].image) {
+                  injectPics(medias, i);
+                }
+                if (medias[i].video) {
+                  injectVideos(medias, i);
+                }
+              }
+            }
+          }
+          if (index === 0) {
+            medias.sort((a, b) => {
+              return a.likes - b.likes; // LIKE FILTER
+            });
+            for (let i = 0; medias[i]; i++) {
+              if (medias[i].photographerId == idUser) {
+                if (medias[i].image) {
+                  injectPics(medias, i);
+                }
+                if (medias[i].video) {
+                  injectVideos(medias, i);
+                }
+              }
+            }
+          }
+        });
+      });
   });
-});
+}
+importUser(); // EXECUTE

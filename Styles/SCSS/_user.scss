@@ -2,6 +2,7 @@
   flex-direction: row;
   padding-left: 6rem;
   padding-right: 6rem;
+  padding-bottom: 6rem;
 }
 
 .banner {
@@ -35,7 +36,7 @@
     flex-direction: column;
   }
   &--contact {
-    padding-left: 4rem;
+    padding-left: 6rem;
     padding-top: 0.5rem;
   }
   &--description {
@@ -95,6 +96,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 31px;
+  width: calc(100% - 20%);
 }
 
 .sortBy {
@@ -131,6 +133,8 @@
   padding-bottom: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  width: 350px;
+  height: 350px;
 }
 
 video {
@@ -138,4 +142,25 @@ video {
   height: 350px;
   border-radius: 5px;
   object-fit: cover;
+}
+
+.footerPhoto {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.likeSection {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.nbLike {
+  padding-right: 0.3rem;
+  color: $bordeaux;
+  font-weight: 500;
+  font-size: 24px;
 }

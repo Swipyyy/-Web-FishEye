@@ -189,6 +189,11 @@ h3 {
   font-weight: 500;
 }
 
+.fa-heart {
+  color: #901c1c;
+  font-size: 20px;
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -332,6 +337,7 @@ header {
           flex-direction: row;
   padding-left: 6rem;
   padding-right: 6rem;
+  padding-bottom: 6rem;
 }
 
 .banner {
@@ -382,7 +388,7 @@ header {
 }
 
 .userPage--contact {
-  padding-left: 4rem;
+  padding-left: 6rem;
   padding-top: 0.5rem;
 }
 
@@ -458,6 +464,7 @@ header {
   font-weight: 400;
   font-size: 24px;
   line-height: 31px;
+  width: calc(100% - 20%);
 }
 
 .sortBy {
@@ -500,6 +507,8 @@ header {
   padding-bottom: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  width: 350px;
+  height: 350px;
 }
 
 video {
@@ -508,5 +517,42 @@ video {
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.footerPhoto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.likeSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.nbLike {
+  padding-right: 0.3rem;
+  color: #901c1c;
+  font-weight: 500;
+  font-size: 24px;
 }
 /*# sourceMappingURL=main.css.map */
