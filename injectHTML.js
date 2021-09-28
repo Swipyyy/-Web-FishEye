@@ -14,8 +14,7 @@ function injectUserBanner(userr, i) {
           >${userr[i].tagline}</span
         >
       </div>
-      <div class="userPage__tag">
-        <button class="navigation__tag">#${userr[i].tags}</button>
+      <div class="userPage__tag" id="tag">
       </div>
     </div>
     <div class="userPage--contact">
@@ -55,8 +54,8 @@ function injectPics(medias, i) {
   />
   <div class="footerPhoto">
     <p class="picDescription">${medias[i].title}</p>
-    <div class ="likeSection">
-    <p class ="nbLike">${medias[i].likes}</p>
+    <div class ="likeSection" id="like${[i]}">
+    <p class ="nbLike" id="nbLike${[i]}">${medias[i].likes}</p>
     <i class="fas fa-heart"></i>
     </div>
   </div>
@@ -78,10 +77,19 @@ function injectVideos(medias, i) {
   </video>
   <div class="footerPhoto">
   <p class="picDescription">${medias[i].title}</p>
-  <div class ="likeSection">
-  <p class ="nbLike">${medias[i].likes}</p>
+  <div class ="likeSection" id="like${[i]}">
+  <p class ="nbLike" id="nbLike${[i]}">${medias[i].likes}</p>
   <i class="fas fa-heart"></i>
   </div>
   </div>`
   );
 }
+
+// function injectButtons(userr, i) {
+//   document
+//     .getElementById("tag")
+//     .insertAdjacentHTML(
+//       "afterbegin",
+//       `<button class="navigation__tag">#${userr[i].tags[i]}</button>`
+//     );
+// }
