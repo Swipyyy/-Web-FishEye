@@ -65,12 +65,6 @@
   }
 }
 
-.photoSection {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .imgMin {
   width: 350px;
   height: 350px;
@@ -79,8 +73,10 @@
 }
 
 .photo {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .userHeader {
@@ -122,4 +118,24 @@
   font-size: 18px;
   line-height: 23px;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.photoSection {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.video {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+video {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  object-fit: cover;
 }

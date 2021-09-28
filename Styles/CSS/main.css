@@ -418,17 +418,6 @@ header {
      object-position: center 60%;
 }
 
-.photoSection {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .imgMin {
   width: 350px;
   height: 350px;
@@ -438,8 +427,10 @@ header {
 }
 
 .photo {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .userHeader {
@@ -491,5 +482,31 @@ header {
   font-size: 18px;
   line-height: 23px;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.photoSection {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.video {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+video {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=main.css.map */

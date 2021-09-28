@@ -17,7 +17,7 @@ rcq.then((response) => {
     console.log(userr);
     for (let i = 0; userr[i]; i++) {
       if (userr[i].id == idUser) {
-        document.getElementById("userWrap").innerHTML = `<div class="banner">
+        document.getElementById("banner").innerHTML = `
         <!-- BANNIERE PHOTOGRAPHE -->
         <div class="userPage">
           <div class="userPage--detail">
@@ -42,115 +42,52 @@ rcq.then((response) => {
             src="img/Photographers ID Photos/${userr[i].portrait}"
             alt="MimiKeel"
           />
-        </div>
-      </div>
-      <div class="sortBy">
+        </div>`;
+        document.getElementById("sortBy").innerHTML = `<div class="sortBy">
         <span class="sortBy__text">Trier par</span>
         <select class="tri" name="sort" id="sortByList">
           <option value="popular">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Titre</option>
         </select>
-      </div>
-      <div class="photoSection">
-        <div class="photo">
-          <img
-            src="img/Mimi/Animals_Rainbow.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Travel_Lonesome.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Event_BenevidesWedding.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Event_PintoWedding.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Event_SeasideWedding.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Portrait_Background.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Portrait_Nora.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Portrait_Wednesday.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="img/Mimi/Travel_HillsideColor.jpg"
-            onclick="openModal();currentSlide(1)"
-            class="imgMin"
-          />
-          <div class="footerPhoto">
-            <p class="picDescription">Test</p>
-          </div>
-        </div>
-        <video width="350" height="350" controls>
-          <source
-            src="img/Mimi/Animals_Wild_Horses_in_the_mountains.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
       </div>`;
+      }
+    }
+    const medias = utilisateur.media;
+    for (let i = 0; medias[i]; i++) {
+      if (medias[i].photographerId == idUser) {
+        if (medias[i].image) {
+          document.getElementById("photoSection").insertAdjacentHTML(
+            "afterbegin",
+            `<div class="photo">
+        <img
+          src="img/img/${medias[i].image}"
+          onclick="openModal();currentSlide(1)"
+          class="imgMin"
+        />
+        <div class="footerPhoto">
+          <p class="picDescription">${medias[i].title}</p>
+        </div>
+      </div>`
+          );
+        }
+        if (medias[i].video) {
+          document.getElementById("photoSection").insertAdjacentHTML(
+            "beforeend",
+            `<div class="video">
+            <video controls>
+            <source
+              src="img/videos/${medias[i].video}"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <div class="footerPhoto">
+          <p class="picDescription">${medias[i].title}</p>
+        </div>
+        </div>`
+          );
+        }
       }
     }
   });
