@@ -70,6 +70,13 @@ function importUser() {
                 if (medias[i].video) {
                   injectVideos(medias, i);
                 }
+                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
+                let like = document.getElementById("nbLike" + [i]);
+                let numberlike = like.innerHTML;
+                likeCount.addEventListener("click", function incrementer() {
+                  numberlike++;
+                  like.innerHTML = numberlike;
+                });
               }
             }
           }
@@ -85,6 +92,13 @@ function importUser() {
                 if (medias[i].video) {
                   injectVideos(medias, i);
                 }
+                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
+                let like = document.getElementById("nbLike" + [i]);
+                let numberlike = like.innerHTML;
+                likeCount.addEventListener("click", function incrementer() {
+                  numberlike++;
+                  like.innerHTML = numberlike;
+                });
               }
             }
           }
@@ -100,14 +114,19 @@ function importUser() {
                 if (medias[i].video) {
                   injectVideos(medias, i);
                 }
+                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
+                let like = document.getElementById("nbLike" + [i]);
+                let numberlike = like.innerHTML;
+                likeCount.addEventListener("click", function incrementer() {
+                  numberlike++;
+                  like.innerHTML = numberlike;
+                });
               }
             }
           }
         });
         return utilisateur;
-      })
-
-      .then((utilisateur) => {});
+      });
   });
 }
 importUser(); // EXECUTE
