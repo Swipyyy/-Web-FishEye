@@ -1,132 +1,149 @@
 // SEARCH ID
 
-var userUrl = window.location.search;
-const urlParams = new URLSearchParams(userUrl);
-const idUser = urlParams.get("id");
+async function loadUserPage(
+  myRequest,
+  listOfPhotographers,
+  listOfMedias,
+  idUser,
+  injectUserBanner,
+  injectUserFilter,
+  injectPics,
+  injectVideos,
+  utilisateur,
+  medias
+) {
+  const response = await fetch(myRequest);
+  const importer = await response.json();
+  for (let p of importer.photographers) {
+    listOfPhotographers.push(
+      new utilisateur(
+        p.name,
+        p.id,
+        p.city,
+        p.country,
+        p.tagline,
+        p.price,
+        p.portrait,
+        p.tags
+      )
+    );
+  }
+  for (let p of importer.media) {
+    listOfMedias.push(
+      new medias(
+        p.id,
+        p.photographerId,
+        p.title,
+        p.image,
+        p.video,
+        p.tags,
+        p.likes,
+        p.date,
+        p.price
+      )
+    );
+  }
+  console.log(listOfPhotographers);
+  listOfPhotographers.forEach((photographers) => {
+    if (photographers.id == idUser) {
+      injectUserBanner(photographers); // INJECT HTML (see JS file)
+      injectUserFilter();
+    }
+  });
+  listOfMedias.sort((a, b) => {
+    return a.likes - b.likes;
+  });
 
-// IMPORT JSON - FETCH
-
-function importUser() {
-  rcq.then((response) => {
-    console.log(response);
-
-    const userData = response.json();
-    console.log(userData);
-
-    userData
-      .then((utilisateur) => {
-        // CREATE PAGE WITH MEDIAS
-        const userr = utilisateur.photographers; // SEARCH PHOTOGRAPHERS ON JSON
-        console.log(userr);
-
-        for (let i = 0; userr[i]; i++) {
-          if (userr[i].id == idUser) {
-            injectUserBanner(userr, i); // INJECT HTML (see JS file)
-            injectUserFilter();
-          }
-        }
-
-        const medias = utilisateur.media; // SEARCH MEDIAS ON JSON
-        medias.sort((a, b) => {
-          return a.likes - b.likes;
-        });
-        for (let i = 0; medias[i]; i++) {
-          if (medias[i].photographerId == idUser) {
-            if (medias[i].image) {
-              injectPics(medias, i); // INJECT PICS
-            }
-            if (medias[i].video) {
-              injectVideos(medias, i); // INJECTS VIDEOS
-            }
-            let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
-            let like = document.getElementById("nbLike" + [i]);
-            let numberlike = like.innerHTML;
-            likeCount.addEventListener("click", function incrementer() {
-              numberlike++;
-              like.innerHTML = numberlike;
-            });
-          }
-        }
-        return utilisateur;
-      })
-
-      .then((utilisateur) => {
-        // CREATE FILTERS
-        const medias = utilisateur.media;
-        let selectItem = document.querySelector("#sortByList");
-        selectItem.addEventListener("change", function () {
-          var index = selectItem.selectedIndex;
-          console.log(index);
-          document.getElementById("photoSection").innerHTML = "";
-          if (index === 2) {
-            medias.sort((b, a) => {
-              return a.title.localeCompare(b.title); // TITLE FILTER
-            });
-            for (let i = 0; medias[i]; i++) {
-              if (medias[i].photographerId == idUser) {
-                if (medias[i].image) {
-                  injectPics(medias, i);
-                }
-                if (medias[i].video) {
-                  injectVideos(medias, i);
-                }
-                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
-                let like = document.getElementById("nbLike" + [i]);
-                let numberlike = like.innerHTML;
-                likeCount.addEventListener("click", function incrementer() {
-                  numberlike++;
-                  like.innerHTML = numberlike;
-                });
-              }
-            }
-          }
-          if (index === 1) {
-            medias.sort((a, b) => {
-              return new Date(a.date) - new Date(b.date); // DATE FILTER
-            });
-            for (let i = 0; medias[i]; i++) {
-              if (medias[i].photographerId == idUser) {
-                if (medias[i].image) {
-                  injectPics(medias, i);
-                }
-                if (medias[i].video) {
-                  injectVideos(medias, i);
-                }
-                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
-                let like = document.getElementById("nbLike" + [i]);
-                let numberlike = like.innerHTML;
-                likeCount.addEventListener("click", function incrementer() {
-                  numberlike++;
-                  like.innerHTML = numberlike;
-                });
-              }
-            }
-          }
-          if (index === 0) {
-            medias.sort((a, b) => {
-              return a.likes - b.likes; // LIKE FILTER
-            });
-            for (let i = 0; medias[i]; i++) {
-              if (medias[i].photographerId == idUser) {
-                if (medias[i].image) {
-                  injectPics(medias, i);
-                }
-                if (medias[i].video) {
-                  injectVideos(medias, i);
-                }
-                let likeCount = document.getElementById("like" + [i]); // LIKE INCREMENT
-                let like = document.getElementById("nbLike" + [i]);
-                let numberlike = like.innerHTML;
-                likeCount.addEventListener("click", function incrementer() {
-                  numberlike++;
-                  like.innerHTML = numberlike;
-                });
-              }
-            }
-          }
-        });
-        return utilisateur;
+  listOfMedias.forEach((medias) => {
+    if (medias.photographerId == idUser) {
+      if (medias.image) {
+        injectPics(medias); // INJECT PICS
+      }
+      if (medias.video) {
+        injectVideos(medias); // INJECTS VIDEOS
+      }
+      let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
+      likeCount.addEventListener("click", function incrementer() {
+        let like = document.getElementById("nbLike" + medias.id);
+        let numberlike = like.innerHTML;
+        numberlike++;
+        like.innerHTML = numberlike;
       });
+    }
+  });
+
+  let selectItem = document.querySelector("#sortByList");
+  selectItem.addEventListener("change", function () {
+    var index = selectItem.selectedIndex;
+    console.log(index);
+    document.getElementById("photoSection").innerHTML = "";
+    if (index === 2) {
+      listOfMedias.sort((b, a) => {
+        return a.title.localeCompare(b.title); // TITLE FILTER
+      });
+      listOfMedias.forEach((medias) => {
+        if (medias.photographerId == idUser) {
+          if (medias.image) {
+            injectPics(medias);
+          }
+          if (medias.video) {
+            injectVideos(medias);
+          }
+          let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
+          let like = document.getElementById("nbLike" + medias.id);
+          let numberlike = like.innerHTML;
+          likeCount.addEventListener("click", function incrementer() {
+            numberlike++;
+            like.innerHTML = numberlike;
+          });
+        }
+      });
+    }
+    if (index === 1) {
+      listOfMedias.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date); // DATE FILTER
+      });
+      listOfMedias.forEach((medias) => {
+        if (medias.photographerId == idUser) {
+          if (medias.image) {
+            injectPics(medias);
+          }
+          if (medias.video) {
+            injectVideos(medias);
+          }
+          let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
+          let like = document.getElementById("nbLike" + medias.id);
+          let numberlike = like.innerHTML;
+          likeCount.addEventListener("click", function incrementer() {
+            numberlike++;
+            like.innerHTML = numberlike;
+          });
+        }
+      });
+    }
+    if (index === 0) {
+      listOfMedias.sort((a, b) => {
+        return a.likes - b.likes; // LIKE FILTER
+      });
+      listOfMedias.forEach((medias) => {
+        if (medias.photographerId == idUser) {
+          if (medias.image) {
+            injectPics(medias);
+          }
+          if (medias.video) {
+            injectVideos(medias);
+          }
+          let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
+          let like = document.getElementById("nbLike" + medias.id);
+          let numberlike = like.innerHTML;
+          likeCount.addEventListener("click", function incrementer() {
+            numberlike++;
+            like.innerHTML = numberlike;
+          });
+        }
+      });
+    }
   });
 }
-importUser(); // EXECUTE
+
+export { loadUserPage };

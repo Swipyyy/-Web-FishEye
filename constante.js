@@ -1,3 +1,5 @@
-var myRequest = new Request("./data/FishEyeData.json");
-const rcq = fetch("./data/FishEyeData.json");
-let myId = [];
+let myRequest = new Request("./data/FishEyeData.json");
+let listOfPhotographers = [];
+let listOfMedias = [];
+
+export { myRequest, listOfPhotographers, listOfMedias };

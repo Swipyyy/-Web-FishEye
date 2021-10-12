@@ -2,16 +2,16 @@
 //
 //
 // BANNER
-function injectUserBanner(userr, i) {
+function injectUserBanner(photographers) {
   document.getElementById("banner").innerHTML = `
   <!-- BANNIERE PHOTOGRAPHE -->
   <div class="userPage">
     <div class="userPage--detail">
-      <h1>${userr[i].name}</h1>
+      <h1>${photographers.name}</h1>
       <div class="userPage--description">
-        <h3>${userr[i].city}, ${userr[i].country}</h3>
+        <h3>${photographers.city}, ${photographers.country}</h3>
         <span class="userPage__citation"
-          >${userr[i].tagline}</span
+          >${photographers.tagline}</span
         >
       </div>
       <div class="userPage__tag" id="tag">
@@ -24,7 +24,7 @@ function injectUserBanner(userr, i) {
   <div class="userDetailImg">
     <img
       class="userDetailImg__img"
-      src="img/Photographers ID Photos/${userr[i].portrait}"
+      src="img/Photographers ID Photos/${photographers.portrait}"
       alt="MimiKeel"
     />
   </div>`;
@@ -43,19 +43,19 @@ function injectUserFilter() {
 }
 
 // PICS
-function injectPics(medias, i) {
+function injectPics(medias) {
   document.getElementById("photoSection").insertAdjacentHTML(
     "afterbegin",
     `<div class="photo">
   <img
-    src="img/img/${medias[i].image}"
+    src="img/img/${medias.image}"
     onclick="openModal();currentSlide(1)"
     class="imgMin"
   />
   <div class="footerPhoto">
-    <p class="picDescription">${medias[i].title}</p>
-    <div class ="likeSection" id="like${[i]}">
-    <p class ="nbLike" id="nbLike${[i]}">${medias[i].likes}</p>
+    <p class="picDescription">${medias.title}</p>
+    <div class ="likeSection" id="like${medias.id}">
+    <p class ="nbLike" id="nbLike${medias.id}">${medias.likes}</p>
     <i class="fas fa-heart"></i>
     </div>
   </div>
@@ -64,26 +64,28 @@ function injectPics(medias, i) {
 }
 
 // VIDEOS
-function injectVideos(medias, i) {
+function injectVideos(medias) {
   document.getElementById("photoSection").insertAdjacentHTML(
     "beforeend",
     `<div class="video">
   <video controls>
   <source
-    src="img/videos/${medias[i].video}"
+    src="img/videos/${medias.video}"
     type="video/mp4"
   />
   Your browser does not support the video tag.
   </video>
   <div class="footerPhoto">
-  <p class="picDescription">${medias[i].title}</p>
-  <div class ="likeSection" id="like${[i]}">
-  <p class ="nbLike" id="nbLike${[i]}">${medias[i].likes}</p>
+  <p class="picDescription">${medias.title}</p>
+  <div class ="likeSection" id="like${medias.id}">
+  <p class ="nbLike" id="nbLike${medias.id}">${medias.likes}</p>
   <i class="fas fa-heart"></i>
   </div>
   </div>`
   );
 }
+
+export { injectUserBanner, injectUserFilter, injectPics, injectVideos };
 
 // function injectButtons(userr, i) {
 //   document
