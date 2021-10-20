@@ -9,6 +9,7 @@ async function loadUserPage(
   injectUserFilter,
   injectPics,
   injectVideos,
+  injectContact,
   utilisateur,
   medias
 ) {
@@ -48,6 +49,27 @@ async function loadUserPage(
     if (photographers.id == idUser) {
       injectUserBanner(photographers); // INJECT HTML (see JS file)
       injectUserFilter();
+      injectContact(photographers);
+      const modalOpen = document.querySelectorAll(".openContact");
+      const modalBg = document.querySelector(".bground");
+      const closeModalBtn = document.querySelectorAll("#close");
+      const sendButton = document.querySelectorAll("#button");
+      modalOpen.forEach((btn) =>
+        btn.addEventListener("click", function launchModal() {
+          modalBg.style.display = "block";
+        })
+      );
+      closeModalBtn.forEach((btn) =>
+        btn.addEventListener("click", function closeModal() {
+          modalBg.style.display = "none";
+        })
+      );
+      // sendButton.forEach((btn) =>
+      //   btn.addEventListener("click", function dispData() {
+      //     let FD = new FormData(form);
+      //     console.log(FD);
+      //   })
+      // );
     }
   });
   listOfMedias.sort((a, b) => {

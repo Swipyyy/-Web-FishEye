@@ -85,13 +85,20 @@ function injectVideos(medias) {
   );
 }
 
-export { injectUserBanner, injectUserFilter, injectPics, injectVideos };
+//CONTACT BUTOON
+function injectContact(photographers) {
+  document.getElementById("contactSection").innerHTML = `
+  <div class="contactSection--like">
+  <p class ="contactSection__nbLike">297 081</p>
+  <i class="fas fa-heart"></i>
+  </div>
+  <div class="contactSection__price">${photographers.price}€ / jour</div>`;
+}
 
-// function injectButtons(userr, i) {
-//   document
-//     .getElementById("tag")
-//     .insertAdjacentHTML(
-//       "afterbegin",
-//       `<button class="navigation__tag">#${userr[i].tags[i]}</button>`
-//     );
-// }
+export {
+  injectUserBanner,
+  injectUserFilter,
+  injectPics,
+  injectVideos,
+  injectContact,
+};

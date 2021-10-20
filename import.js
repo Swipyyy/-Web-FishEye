@@ -48,83 +48,9 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
         .querySelector("#tag" + idNow)
         .insertAdjacentHTML(
           "afterbegin",
-          `<button class="navigation__tag" id="${element}">#${element}</button>`
+          `<button class="navigation__tag" href="index.html?=coucou" id="${element}">#${element}</button>`
         );
     });
   });
-  return console.log("ok");
 }
 export { loadData };
-
-// // CREATE MAIN PAGE WITH FETCH (JSON)
-// function fetchData() {
-//   fetch(myRequest)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw Error("ERROR");
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       const html = data.photographers // SEARCH DATA ON JSON
-//         .map((user) => {
-//           // RETURN AND INJECT JTML
-//           return `<div class="user" id="user${user.id}">
-//           <div class="user--profile">
-//             <a class="link" id="${user.id}" href="test.html?id=${user.id}"">
-//               <div class="userImg">
-//                 <img
-//                   class="userImg__img"
-//                   src="../img/Photographers ID Photos/${user.portrait}"
-//                   alt="${user.name}"
-//                 />
-//               </div>
-//               <div class="user__name">
-//                 <h2>${user.name}</h2>
-//               </div>
-//             </a>
-//           </div>
-//           <div class="user--description">
-//             <h3 class="user__city">${user.country}</h3>
-//             <p class="user__citation">${user.tagline}</p>
-//             <p class="user__price">${user.price}€/jour</p>
-//           </div>
-//           <div class="user--tag" id=tag${user.id}>
-//           </div>
-//     </div>`;
-//         })
-//         .join("");
-//       document
-//         .querySelector("#insertUsers")
-//         .insertAdjacentHTML("afterbegin", html);
-//       return data;
-//     })
-//     .then((data) => {
-//       const html = data.photographers
-//         .map((user) => {
-//           let idNow = user.id;
-//           user.tags.forEach((element) => {
-//             document
-//               .querySelector("#tag" + idNow)
-//               .insertAdjacentHTML(
-//                 "afterbegin",
-//                 `<button class="navigation__tag" id="${element}">#${element}</button>`
-//               );
-//           });
-//         })
-//         .join("");
-//       document
-//         .querySelector(".user--tag")
-//         .insertAdjacentHTML("afterbegin", html);
-//       return data;
-//     })
-//     .then((data) => {
-//       const html = data.photographers;
-//     })
-
-//     .catch((error) => {
-//       // ERROR OPTION
-//       console.log(error);
-//     });
-// }
-// // fetchData(); // EXECUTE

@@ -33,6 +33,67 @@
         <div class="banner" id="banner"></div>
         <div class="sortBy" id="sortBy"></div>
         <div class="photoSection" id="photoSection"></div>
+        <div class="contactSection" id="contactSection"></div>
+        <!--           Formulaire              -->
+      </div>
+      <div class="bground">
+        <div class="content">
+          <span id="close" class="close"></span>
+          <div class="modal-body" id="body">
+            <span class="modal-title">Contactez-moi</span>
+            <span class="modal-title">Name</span>
+            <!-- Appel fonction JS / déclaration formulaire -->
+            <form id="form" name="reserve" method="post">
+              <!-- Sections de saisies -->
+              <div id="errorFirst" class="formData">
+                <label for="first">Prénom</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                  minlength="2"
+                /><br />
+              </div>
+              <div id="errorLast" class="formData">
+                <label for="last">Nom</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  minlength="2"
+                /><br />
+              </div>
+              <div id="errorMail" class="formData">
+                <label for="email">E-mail</label><br />
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                /><br />
+              </div>
+              <div id="message" class="formData">
+                <label for="textMessage">Message</label><br />
+                <textarea
+                  class="text-control text-control__message"
+                  type="textarea"
+                  id="textMessage"
+                  name="textMessage"
+                ></textarea
+                ><br />
+              </div>
+              <!-- Bouton d'envoi -->
+              <input
+                class="btn-submit"
+                type="submit"
+                id="button"
+                value="Envoyer"
+              />
+            </form>
+          </div>
+        </div>
       </div>
     </main>
   </body>

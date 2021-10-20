@@ -5,6 +5,7 @@ import {
   injectUserFilter,
   injectPics,
   injectVideos,
+  injectContact,
 } from "./injectHTML.js";
 import { loadUserPage } from "./userPage.js";
 
@@ -22,6 +23,7 @@ function letsgo() {
     injectUserFilter,
     injectPics,
     injectVideos,
+    injectContact,
     utilisateur,
     medias
   );
