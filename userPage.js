@@ -1,5 +1,7 @@
 // SEARCH ID
 
+import { lightBox } from "./lightBox.js";
+
 async function loadUserPage(
   myRequest,
   listOfPhotographers,
@@ -10,6 +12,10 @@ async function loadUserPage(
   injectPics,
   injectVideos,
   injectContact,
+  injectLightbox,
+  injectLightboxVideo,
+  injectLightBoxControls,
+  injectContactForm,
   utilisateur,
   medias
 ) {
@@ -49,6 +55,7 @@ async function loadUserPage(
     if (photographers.id == idUser) {
       injectUserBanner(photographers); // INJECT HTML (see JS file)
       injectUserFilter();
+      injectContactForm(photographers);
       injectContact(photographers);
       const modalOpen = document.querySelectorAll(".openContact");
       const modalBg = document.querySelector(".bground");
@@ -64,12 +71,16 @@ async function loadUserPage(
           modalBg.style.display = "none";
         })
       );
-      // sendButton.forEach((btn) =>
-      //   btn.addEventListener("click", function dispData() {
-      //     let FD = new FormData(form);
-      //     console.log(FD);
-      //   })
-      // );
+      sendButton.forEach((btn) =>
+        btn.addEventListener("click", function printForm() {
+          let first = document.getElementById("first").value;
+          let last = document.getElementById("last").value;
+          let email = document.getElementById("email").value;
+          let textMessage = document.getElementById("textMessage").value;
+          console.log(first, last, email, textMessage);
+          modalBg.style.display = "none";
+        })
+      );
     }
   });
   listOfMedias.sort((a, b) => {
@@ -79,10 +90,12 @@ async function loadUserPage(
   listOfMedias.forEach((medias) => {
     if (medias.photographerId == idUser) {
       if (medias.image) {
-        injectPics(medias); // INJECT PICS
+        injectPics(medias);
+        injectLightbox(medias); // INJECT PICS
       }
       if (medias.video) {
-        injectVideos(medias); // INJECTS VIDEOS
+        injectVideos(medias);
+        injectLightboxVideo(medias); // INJECTS VIDEOS
       }
       let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
       likeCount.addEventListener("click", function incrementer() {
@@ -93,6 +106,7 @@ async function loadUserPage(
       });
     }
   });
+  injectLightBoxControls();
 
   let selectItem = document.querySelector("#sortByList");
   selectItem.addEventListener("change", function () {
@@ -107,9 +121,11 @@ async function loadUserPage(
         if (medias.photographerId == idUser) {
           if (medias.image) {
             injectPics(medias);
+            injectLightbox(medias);
           }
           if (medias.video) {
             injectVideos(medias);
+            injectLightboxVideo(medias);
           }
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
@@ -129,9 +145,11 @@ async function loadUserPage(
         if (medias.photographerId == idUser) {
           if (medias.image) {
             injectPics(medias);
+            injectLightbox(medias);
           }
           if (medias.video) {
             injectVideos(medias);
+            injectLightboxVideo(medias);
           }
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
@@ -151,9 +169,11 @@ async function loadUserPage(
         if (medias.photographerId == idUser) {
           if (medias.image) {
             injectPics(medias);
+            injectLightbox(medias);
           }
           if (medias.video) {
             injectVideos(medias);
+            injectLightboxVideo(medias);
           }
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
@@ -165,7 +185,9 @@ async function loadUserPage(
         }
       });
     }
+    lightBox();
   });
+  lightBox();
 }
 
 export { loadUserPage };

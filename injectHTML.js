@@ -49,7 +49,6 @@ function injectPics(medias) {
     `<div class="photo">
   <img
     src="img/img/${medias.image}"
-    onclick="openModal();currentSlide(1)"
     class="imgMin"
   />
   <div class="footerPhoto">
@@ -66,9 +65,9 @@ function injectPics(medias) {
 // VIDEOS
 function injectVideos(medias) {
   document.getElementById("photoSection").insertAdjacentHTML(
-    "beforeend",
+    "afterbegin",
     `<div class="video">
-  <video controls>
+  <video class="imgMin">
   <source
     src="img/videos/${medias.video}"
     type="video/mp4"
@@ -85,7 +84,46 @@ function injectVideos(medias) {
   );
 }
 
-//CONTACT BUTOON
+//LIGHTBOX
+function injectLightbox(medias) {
+  document.getElementById("modal-content").insertAdjacentHTML(
+    "afterbegin",
+    `
+      <div class="mySlides">
+        <img src="img/img/${medias.image}">
+        <span class="slideTitle" id="slideTitle">${medias.title}</span>
+      </div>`
+  );
+}
+
+//LIGHTBOX VIDEOS
+function injectLightboxVideo(medias) {
+  document.getElementById("modal-content").insertAdjacentHTML(
+    "afterbegin",
+    `
+      <div class="mySlides">
+      <video controls width="750">
+      <source
+        src="img/videos/${medias.video}"
+        type="video/mp4"
+      />
+      </video>
+        <span class="slideTitle" id="slideTitle">${medias.title}</span>
+      </div>`
+  );
+}
+
+//LIGHTBOX CONTROLS
+function injectLightBoxControls() {
+  document.getElementById("modal-content").insertAdjacentHTML(
+    "beforeend",
+    `  <span class="closeModal" id="closeModal">&times;</span>
+<a class="prev" id="prevSlides">&#10094;</a>
+<a class="next" id="plusSlides">&#10095;</a>`
+  );
+}
+
+//CONTACT BUTTON
 function injectContact(photographers) {
   document.getElementById("contactSection").innerHTML = `
   <div class="contactSection--like">
@@ -95,10 +133,75 @@ function injectContact(photographers) {
   <div class="contactSection__price">${photographers.price}€ / jour</div>`;
 }
 
+//CONTACT FORM
+function injectContactForm(photographers) {
+  document.getElementById("bground").innerHTML = `        <div class="content">
+  <span id="close" class="close"></span>
+  <div class="modal-body" id="body">
+    <span class="modal-title">Contactez-moi</span>
+    <span class="modal-title">${photographers.name}</span>
+    <!-- Appel fonction JS / déclaration formulaire -->
+    <form id="form" name="reserve" action="" method="">
+      <!-- Sections de saisies -->
+      <div id="errorFirst" class="formData">
+        <label for="first">Prénom</label><br />
+        <input
+          class="text-control"
+          type="text"
+          id="first"
+          name="first"
+          minlength="2"
+        /><br />
+      </div>
+      <div id="errorLast" class="formData">
+        <label for="last">Nom</label><br />
+        <input
+          class="text-control"
+          type="text"
+          id="last"
+          name="last"
+          minlength="2"
+        /><br />
+      </div>
+      <div id="errorMail" class="formData">
+        <label for="email">E-mail</label><br />
+        <input
+          class="text-control"
+          type="email"
+          id="email"
+          name="email"
+        /><br />
+      </div>
+      <div id="message" class="formData">
+        <label for="textMessage">Message</label><br />
+        <textarea
+          class="text-control text-control__message"
+          type="textarea"
+          id="textMessage"
+          name="textMessage"
+        ></textarea
+        ><br />
+      </div>
+      <!-- Bouton d'envoi -->
+      <input
+        class="btn-submit"
+        type="button"
+        id="button"
+        value="Envoyer"
+      />
+    </form>
+  </div>
+</div>`;
+}
+
 export {
   injectUserBanner,
   injectUserFilter,
   injectPics,
   injectVideos,
   injectContact,
+  injectLightbox,
+  injectLightboxVideo,
+  injectLightBoxControls,
+  injectContactForm,
 };
