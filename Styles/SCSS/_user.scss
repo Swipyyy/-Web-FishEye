@@ -287,16 +287,15 @@ video {
   height: 100%;
   overflow: auto;
   background-color: #fefefe;
+  justify-content: center;
 }
 
 .modal-content {
   position: relative;
   display: flex;
   background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  max-width: 100%;
   max-height: 100%;
+  margin: 3rem;
 }
 
 .closeModal {
@@ -315,11 +314,14 @@ video {
 .mySlides {
   display: flex;
   flex-direction: column;
+
   & img,
   video {
     width: auto;
-    height: 700px;
-    max-width: 1000px;
+    height: auto;
+    max-height: 700px;
+    max-width: 100%;
+    object-fit: cover;
   }
 }
 

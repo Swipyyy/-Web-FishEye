@@ -24,13 +24,13 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
       document.querySelector("#insertUsers").insertAdjacentHTML(
         "afterbegin",
         `<div class="user" id="user${photographers.id}">
-            <div class="user--profile">
-              <a class="link" id="${photographers.id}" href="test.html?id=${photographers.id}">
+            <div class="user--profile" aria-label="${photographers.name}">
+              <a class="link" id="${photographers.id}" href="user.html?id=${photographers.id}">
                 <div class="userImg">
                   <img
                     class="userImg__img"
                     src="../img/Photographers ID Photos/${photographers.portrait}"
-                    alt="${photographers.name}"
+                    alt=""
                   />
                 </div>
                 <div class="user__name">
@@ -53,7 +53,7 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
           .querySelector("#tag" + idNow)
           .insertAdjacentHTML(
             "afterbegin",
-            `<a class="navigation__tag" href="/index.html?tag=${element}">#${element}</a>`
+            `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
           );
       });
     });
@@ -71,13 +71,13 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
         document.querySelector("#insertUsers").insertAdjacentHTML(
           "afterbegin",
           `<div class="user" id="user${photographers.id}">
-        <div class="user--profile">
+        <div class="user--profile" aria-label="${photographers.name}">
           <a class="link" id="${photographers.id}" href="test.html?id=${photographers.id}">
             <div class="userImg">
               <img
                 class="userImg__img"
                 src="../img/Photographers ID Photos/${photographers.portrait}"
-                alt="${photographers.name}"
+                alt=""
               />
             </div>
             <div class="user__name">
@@ -100,7 +100,7 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
             .querySelector("#tag" + idNow)
             .insertAdjacentHTML(
               "afterbegin",
-              `<a class="navigation__tag" href="/index.html?tag=${element}">#${element}</a>`
+              `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
             );
         });
       }

@@ -20,11 +20,9 @@ function lightBox() {
       slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "flex";
-    console.log(slideIndex);
   }
 
   let lightBoxImg = document.querySelectorAll(".imgMin");
-  console.log(lightBoxImg);
   let c = 1;
   lightBoxImg.forEach(function (item) {
     item.setAttribute("id", c);
@@ -49,6 +47,19 @@ function lightBox() {
   closeModal.addEventListener("click", function closeThis() {
     document.getElementById("myModal").style.display = "none";
   });
+
+  document.onkeydown = checkKey;
+  function checkKey(e) {
+    e = e || window.event;
+
+    if (e.keyCode == "27") {
+      document.getElementById("myModal").style.display = "none";
+    } else if (e.keyCode == "37") {
+      showSlides(slideIndex--);
+    } else if (e.keyCode == "39") {
+      showSlides(slideIndex++);
+    }
+  }
 }
 
 export { lightBox };

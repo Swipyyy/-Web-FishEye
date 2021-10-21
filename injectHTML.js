@@ -18,23 +18,36 @@ function injectUserBanner(photographers) {
       </div>
     </div>
     <div class="userPage--contact">
-      <button class="openContact">Contactez-moi</button>
+      <button class="openContact" aria-label="Contact Me">Contactez-moi</button>
     </div>
   </div>
   <div class="userDetailImg">
     <img
       class="userDetailImg__img"
       src="img/Photographers ID Photos/${photographers.portrait}"
-      alt="MimiKeel"
+      alt="${photographers.name}"
     />
   </div>`;
+}
+
+// USER TAGS
+
+function injectUserTags(photographers) {
+  photographers.tags.forEach((element) => {
+    document
+      .querySelector("#tag")
+      .insertAdjacentHTML(
+        "afterbegin",
+        `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
+      );
+  });
 }
 
 // FILTER BUTTON
 function injectUserFilter() {
   document.getElementById("sortBy").innerHTML = `<div class="sortBy">
   <span class="sortBy__text">Trier par</span>
-  <select class="tri" name="sort" id="sortByList">
+  <select class="tri" name="sort" id="sortByList" aria-label="Order By">
     <option value="popular">Popularité</option>
     <option value="date">Date</option>
     <option value="title">Titre</option>
@@ -196,6 +209,7 @@ function injectContactForm(photographers) {
 
 export {
   injectUserBanner,
+  injectUserTags,
   injectUserFilter,
   injectPics,
   injectVideos,

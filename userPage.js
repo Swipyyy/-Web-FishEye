@@ -8,6 +8,7 @@ async function loadUserPage(
   listOfMedias,
   idUser,
   injectUserBanner,
+  injectUserTags,
   injectUserFilter,
   injectPics,
   injectVideos,
@@ -50,10 +51,10 @@ async function loadUserPage(
       )
     );
   }
-  console.log(listOfPhotographers);
   listOfPhotographers.forEach((photographers) => {
     if (photographers.id == idUser) {
       injectUserBanner(photographers); // INJECT HTML (see JS file)
+      injectUserTags(photographers);
       injectUserFilter();
       injectContactForm(photographers);
       injectContact(photographers);
@@ -111,7 +112,6 @@ async function loadUserPage(
   let selectItem = document.querySelector("#sortByList");
   selectItem.addEventListener("change", function () {
     var index = selectItem.selectedIndex;
-    console.log(index);
     document.getElementById("photoSection").innerHTML = "";
     if (index === 2) {
       listOfMedias.sort((b, a) => {
