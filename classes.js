@@ -21,7 +21,8 @@ export class medias {
     tags,
     likes,
     date,
-    price
+    price,
+    description
   ) {
     this.id = id;
     this.photographerId = photographerId;
@@ -32,5 +33,6 @@ export class medias {
     this.likes = likes;
     this.date = date;
     this.price = price;
+    this.description = description;
   }
 }

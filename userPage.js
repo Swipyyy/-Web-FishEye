@@ -47,7 +47,8 @@ async function loadUserPage(
         p.tags,
         p.likes,
         p.date,
-        p.price
+        p.price,
+        p.description
       )
     );
   }
@@ -65,6 +66,21 @@ async function loadUserPage(
       modalOpen.forEach((btn) =>
         btn.addEventListener("click", function launchModal() {
           modalBg.style.display = "block";
+          document.onkeydown = checkKey;
+          function checkKey(e) {
+            e = e || window.event;
+
+            if (e.keyCode == "27") {
+              modalBg.style.display = "none";
+            } else if (e.keyCode == "13") {
+              let first = document.getElementById("first").value;
+              let last = document.getElementById("last").value;
+              let email = document.getElementById("email").value;
+              let textMessage = document.getElementById("textMessage").value;
+              console.log(first, last, email, textMessage);
+              modalBg.style.display = "none";
+            }
+          }
         })
       );
       closeModalBtn.forEach((btn) =>
@@ -185,7 +201,6 @@ async function loadUserPage(
         }
       });
     }
-    lightBox();
   });
   lightBox();
 }

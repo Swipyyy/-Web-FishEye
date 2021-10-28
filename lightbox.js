@@ -2,7 +2,7 @@ function lightBox() {
   let slideIndex = 1;
   showSlides(slideIndex);
   function showSlides(n) {
-    let i;
+    let i = 0;
     let slides = document.getElementsByClassName("mySlides");
     if (slideIndex < 1) {
       slideIndex = slides.length;
@@ -20,6 +20,18 @@ function lightBox() {
       slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "flex";
+    document.onkeydown = checkKey;
+    function checkKey(e) {
+      e = e || window.event;
+
+      if (e.keyCode == "27") {
+        document.getElementById("myModal").style.display = "none";
+      } else if (e.keyCode == "37") {
+        showSlides(slideIndex--);
+      } else if (e.keyCode == "39") {
+        showSlides(slideIndex++);
+      }
+    }
   }
 
   let lightBoxImg = document.querySelectorAll(".imgMin");
@@ -47,19 +59,6 @@ function lightBox() {
   closeModal.addEventListener("click", function closeThis() {
     document.getElementById("myModal").style.display = "none";
   });
-
-  document.onkeydown = checkKey;
-  function checkKey(e) {
-    e = e || window.event;
-
-    if (e.keyCode == "27") {
-      document.getElementById("myModal").style.display = "none";
-    } else if (e.keyCode == "37") {
-      showSlides(slideIndex--);
-    } else if (e.keyCode == "39") {
-      showSlides(slideIndex++);
-    }
-  }
 }
 
 export { lightBox };

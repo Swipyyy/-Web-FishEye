@@ -1,7 +1,7 @@
-// HTML INJECTION IN USER PAGE //
-//
-//
-// BANNER
+/*
+ * HTML INJECTION IN USER PAGE
+ * BANNER
+ */
 function injectUserBanner(photographers) {
   document.getElementById("banner").innerHTML = `
   <!-- BANNIERE PHOTOGRAPHE -->
@@ -34,9 +34,9 @@ function injectUserBanner(photographers) {
 
 function injectUserTags(photographers) {
   photographers.tags.forEach((element) => {
-    document
-      .querySelector("#tag")
-      .insertAdjacentHTML(
+    document.
+      querySelector("#tag").
+      insertAdjacentHTML(
         "afterbegin",
         `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
       );
@@ -63,6 +63,7 @@ function injectPics(medias) {
   <img
     src="img/img/${medias.image}"
     class="imgMin"
+    alt="${medias.description}"
   />
   <div class="footerPhoto">
     <p class="picDescription">${medias.title}</p>
@@ -84,6 +85,7 @@ function injectVideos(medias) {
   <source
     src="img/videos/${medias.video}"
     type="video/mp4"
+    alt="${medias.description}"
   />
   Your browser does not support the video tag.
   </video>
@@ -97,19 +99,19 @@ function injectVideos(medias) {
   );
 }
 
-//LIGHTBOX
+// LIGHTBOX
 function injectLightbox(medias) {
   document.getElementById("modal-content").insertAdjacentHTML(
     "afterbegin",
     `
       <div class="mySlides">
-        <img src="img/img/${medias.image}">
+        <img src="img/img/${medias.image}" alt="${medias.description}">
         <span class="slideTitle" id="slideTitle">${medias.title}</span>
       </div>`
   );
 }
 
-//LIGHTBOX VIDEOS
+// LIGHTBOX VIDEOS
 function injectLightboxVideo(medias) {
   document.getElementById("modal-content").insertAdjacentHTML(
     "afterbegin",
@@ -119,6 +121,7 @@ function injectLightboxVideo(medias) {
       <source
         src="img/videos/${medias.video}"
         type="video/mp4"
+        alt="${medias.description}"
       />
       </video>
         <span class="slideTitle" id="slideTitle">${medias.title}</span>
@@ -126,7 +129,7 @@ function injectLightboxVideo(medias) {
   );
 }
 
-//LIGHTBOX CONTROLS
+// LIGHTBOX CONTROLS
 function injectLightBoxControls() {
   document.getElementById("modal-content").insertAdjacentHTML(
     "beforeend",
@@ -136,7 +139,7 @@ function injectLightBoxControls() {
   );
 }
 
-//CONTACT BUTTON
+// CONTACT BUTTON
 function injectContact(photographers) {
   document.getElementById("contactSection").innerHTML = `
   <div class="contactSection--like">
@@ -146,7 +149,7 @@ function injectContact(photographers) {
   <div class="contactSection__price">${photographers.price}€ / jour</div>`;
 }
 
-//CONTACT FORM
+// CONTACT FORM
 function injectContactForm(photographers) {
   document.getElementById("bground").innerHTML = `        <div class="content">
   <span id="close" class="close"></span>
@@ -217,5 +220,5 @@ export {
   injectLightbox,
   injectLightboxVideo,
   injectLightBoxControls,
-  injectContactForm,
+  injectContactForm
 };
