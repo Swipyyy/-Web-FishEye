@@ -15,11 +15,11 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
       )
     );
   }
-  var userUrl = window.location.search;
+  let userUrl = window.location.search;
   const urlParams = new URLSearchParams(userUrl);
   let tagUser = urlParams.get("tag");
 
-  if (tagUser == null) {
+  if (tagUser === null) {
     listOfPhotographers.forEach((photographers) => {
       document.querySelector("#insertUsers").insertAdjacentHTML(
         "afterbegin",
@@ -49,9 +49,9 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
       );
       let idNow = photographers.id;
       photographers.tags.forEach((element) => {
-        document
-          .querySelector("#tag" + idNow)
-          .insertAdjacentHTML(
+        document.
+          querySelector("#tag" + idNow).
+          insertAdjacentHTML(
             "afterbegin",
             `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
           );
@@ -59,10 +59,11 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
     });
   } else {
     let filterArray = [];
-    document.querySelector("#insertUsers").innerHTML = ``;
+    document.querySelector("#insertUsers").innerHTML = "";
     listOfPhotographers.forEach((elt) => {
       let search = elt.tags;
-      if (search.find((element) => element == tagUser)) {
+      if (search.find((element) =>
+        element == tagUser)) {
         filterArray.push(elt.id);
       }
     });
@@ -96,9 +97,9 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
         );
         let idNow = photographers.id;
         photographers.tags.forEach((element) => {
-          document
-            .querySelector("#tag" + idNow)
-            .insertAdjacentHTML(
+          document.
+            querySelector("#tag" + idNow).
+            insertAdjacentHTML(
               "afterbegin",
               `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
             );

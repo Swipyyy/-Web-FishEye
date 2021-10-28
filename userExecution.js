@@ -1,18 +1,19 @@
-import { myRequest, listOfPhotographers, listOfMedias } from "./constante.js";
-import { utilisateur, medias } from "./classes.js";
 import {
-  injectUserBanner,
-  injectUserTags,
-  injectUserFilter,
-  injectPics,
-  injectVideos,
   injectContact,
+  injectContactForm,
+  injectLightBoxControls,
   injectLightbox,
   injectLightboxVideo,
-  injectLightBoxControls,
-  injectContactForm,
+  injectPics,
+  injectUserBanner,
+  injectUserFilter,
+  injectUserTags,
+  injectVideos
 } from "./injectHTML.js";
+import { listOfMedias, listOfPhotographers, myRequest } from "./constante.js";
 import { loadUserPage } from "./userPage.js";
+import { medias } from "./mediaClass.js";
+import { utilisateur } from "./userClass.js";
 
 function letsgo() {
   var userUrl = window.location.search;

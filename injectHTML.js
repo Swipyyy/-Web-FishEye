@@ -133,9 +133,9 @@ function injectLightboxVideo(medias) {
 function injectLightBoxControls() {
   document.getElementById("modal-content").insertAdjacentHTML(
     "beforeend",
-    `  <span class="closeModal" id="closeModal">&times;</span>
-<a class="prev" id="prevSlides">&#10094;</a>
-<a class="next" id="plusSlides">&#10095;</a>`
+    `  <span class="closeModal" id="closeModal" aria-label="Close dialog">&times;</span>
+<a class="prev" id="prevSlides" aria-label="Previous image">&#10094;</a>
+<a class="next" id="plusSlides" aria-label="Next Image">&#10095;</a>`
   );
 }
 
@@ -211,14 +211,14 @@ function injectContactForm(photographers) {
 }
 
 export {
-  injectUserBanner,
-  injectUserTags,
-  injectUserFilter,
-  injectPics,
-  injectVideos,
   injectContact,
+  injectContactForm,
+  injectLightBoxControls,
   injectLightbox,
   injectLightboxVideo,
-  injectLightBoxControls,
-  injectContactForm
+  injectPics,
+  injectUserBanner,
+  injectUserFilter,
+  injectUserTags,
+  injectVideos
 };
