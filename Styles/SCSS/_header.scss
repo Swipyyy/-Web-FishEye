@@ -10,10 +10,81 @@ header {
 }
 
 .logo {
-  height: 15%;
-  width: 15%;
   &__fe {
     height: 100%;
     width: 100%;
   }
+}
+
+.navigation {
+  &__tag {
+    color: $bordeaux;
+    border-radius: 11px;
+    box-sizing: border-box;
+    border: 0.5px solid #c4c4c4;
+    height: 22px;
+    background-color: white;
+    @include colorTag;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-top: 0.3rem;
+    padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+  }
+}
+
+
+@media screen and (max-width: 1134px) {
+
+  header {
+   flex-wrap: wrap;
+  }
+
+  .logo {
+    order: 1;
+    padding-right: 1rem;
+    padding-left: 4rem;
+  }
+  h1 {
+    order: 2;
+    font-size: 24px;
+    padding-right: 4rem;
+
+  }
+  .navigation {
+    padding-top: 2rem;
+    order: 3;
+    width: 100%;
+    text-align: center;  
+  }
+}
+
+@media screen and (max-width: 714px) {
+  header {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    &__tag {
+      margin-top: 0.3rem;
+    }
+  }
+
+}
+
+@media screen and (max-width: 568px) {
+  .logo {
+    &__fe {
+      height: 70%;
+      width: 70%;
+    }
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
 }

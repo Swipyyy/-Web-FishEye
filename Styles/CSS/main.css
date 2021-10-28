@@ -162,23 +162,6 @@ h3 {
   text-align: center;
 }
 
-.navigation__tag {
-  color: #901c1c;
-  border-radius: 11px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 0.5px solid #c4c4c4;
-  height: 22px;
-  background-color: white;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15.62px;
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
-  padding: 0.1rem 0.2rem 0.1rem 0.2rem;
-}
-
 .openContact {
   background-color: #901c1c;
   color: white;
@@ -243,14 +226,89 @@ header {
           align-items: center;
 }
 
-.logo {
-  height: 15%;
-  width: 15%;
-}
-
 .logo__fe {
   height: 100%;
   width: 100%;
+}
+
+.navigation__tag {
+  color: #901c1c;
+  border-radius: 11px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0.5px solid #c4c4c4;
+  height: 22px;
+  background-color: white;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15.62px;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  margin-top: 0.3rem;
+  padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+}
+
+@media screen and (max-width: 1134px) {
+  header {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .logo {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    padding-right: 1rem;
+    padding-left: 4rem;
+  }
+  h1 {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    font-size: 24px;
+    padding-right: 4rem;
+  }
+  .navigation {
+    padding-top: 2rem;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 714px) {
+  header {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .navigation__tag {
+    margin-top: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .logo__fe {
+    height: 70%;
+    width: 70%;
+  }
+  h1 {
+    font-size: 14px;
+  }
 }
 
 .section {
