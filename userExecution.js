@@ -9,11 +9,11 @@ import {
   injectUserFilter,
   injectUserTags,
   injectVideos
-} from "./injectHTML.js";
-import { listOfMedias, listOfPhotographers, myRequest } from "./constante.js";
-import { loadUserPage } from "./userPage.js";
-import { medias } from "./mediaClass.js";
-import { utilisateur } from "./userClass.js";
+} from "/injectHTML.js";
+import { listOfMedias, listOfPhotographers, myRequest } from "/constante.js";
+import { loadUserPage } from "/userPage.js";
+import { medias } from "/mediaClass.js";
+import { utilisateur } from "/userClass.js";
 
 function letsgo() {
   var userUrl = window.location.search;
