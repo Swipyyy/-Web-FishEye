@@ -31,7 +31,6 @@ function injectUserBanner(photographers) {
 }
 
 // USER TAGS
-
 function injectUserTags(photographers) {
   photographers.tags.forEach((element) => {
     document.
