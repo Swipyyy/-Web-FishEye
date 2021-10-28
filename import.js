@@ -29,7 +29,7 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
                 <div class="userImg">
                   <img
                     class="userImg__img"
-                    src="../img/Photographers ID Photos/${photographers.portrait}"
+                    src="/img/Photographers ID Photos/${photographers.portrait}"
                     alt=""
                   />
                 </div>

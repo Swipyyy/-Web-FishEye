@@ -190,6 +190,7 @@ h3 {
   text-align: center;
   line-height: 26px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .fa-heart {
@@ -213,6 +214,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 a:link {
@@ -433,6 +437,7 @@ header {
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 
 .photo {
