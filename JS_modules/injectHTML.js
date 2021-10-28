@@ -9,7 +9,7 @@ function injectUserBanner(photographers) {
     <div class="userPage--detail">
       <h1>${photographers.name}</h1>
       <div class="userPage--description">
-        <h3>${photographers.city}, ${photographers.country}</h3>
+        <p class="userPage__city">${photographers.city}, ${photographers.country}</p>
         <span class="userPage__citation"
           >${photographers.tagline}</span
         >
