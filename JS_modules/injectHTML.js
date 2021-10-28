@@ -24,7 +24,7 @@ function injectUserBanner(photographers) {
   <div class="userDetailImg">
     <img
       class="userDetailImg__img"
-      src="img/Photographers ID Photos/${photographers.portrait}"
+      src="./img/Photographers ID Photos/${photographers.portrait}"
       alt="${photographers.name}"
     />
   </div>`;
@@ -38,7 +38,7 @@ function injectUserTags(photographers) {
       querySelector("#tag").
       insertAdjacentHTML(
         "afterbegin",
-        `<a class="navigation__tag" href="/index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
+        `<a class="navigation__tag" href="./index.html?tag=${element}"><span aria-label="tag">#${element}</span</a>`
       );
   });
 }
