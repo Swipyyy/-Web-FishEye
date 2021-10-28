@@ -69,7 +69,7 @@ function injectPics(medias) {
     <p class="picDescription">${medias.title}</p>
     <div class ="likeSection" id="like${medias.id}">
     <p class ="nbLike" id="nbLike${medias.id}">${medias.likes}</p>
-    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart" aria-label="likes"></i>
     </div>
   </div>
   </div>`
