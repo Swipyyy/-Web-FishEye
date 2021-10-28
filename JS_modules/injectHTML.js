@@ -61,7 +61,7 @@ function injectPics(medias) {
     "afterbegin",
     `<div class="photo">
   <img
-    src="img/img/${medias.image}"
+    src="./img/img/${medias.image}"
     class="imgMin"
     alt="${medias.description}"
   />
@@ -83,7 +83,7 @@ function injectVideos(medias) {
     `<div class="video">
   <video class="imgMin">
   <source
-    src="img/videos/${medias.video}"
+    src="./img/videos/${medias.video}"
     type="video/mp4"
     alt="${medias.description}"
   />
@@ -105,7 +105,7 @@ function injectLightbox(medias) {
     "afterbegin",
     `
       <div class="mySlides">
-        <img src="img/img/${medias.image}" alt="${medias.description}">
+        <img src="./img/img/${medias.image}" alt="${medias.description}">
         <span class="slideTitle" id="slideTitle">${medias.title}</span>
       </div>`
   );
@@ -119,7 +119,7 @@ function injectLightboxVideo(medias) {
       <div class="mySlides">
       <video controls width="750">
       <source
-        src="img/videos/${medias.video}"
+        src="./img/videos/${medias.video}"
         type="video/mp4"
         alt="${medias.description}"
       />
