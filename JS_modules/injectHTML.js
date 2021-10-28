@@ -60,7 +60,7 @@ function injectPics(medias) {
     "afterbegin",
     `<div class="photo">
   <img
-    src="./img/img/${medias.image}"
+    src="./img/Photos/${medias.image}"
     class="imgMin"
     alt="${medias.description}"
   />
@@ -104,7 +104,7 @@ function injectLightbox(medias) {
     "afterbegin",
     `
       <div class="mySlides">
-        <img src="./img/img/${medias.image}" alt="${medias.description}">
+        <img src="./img/Photos/${medias.image}" alt="${medias.description}">
         <span class="slideTitle" id="slideTitle">${medias.title}</span>
       </div>`
   );
