@@ -1,6 +1,6 @@
 // SEARCH ID
 
-import { lightBox } from "/lightBox.js";
+import { lightBox } from "./lightBox.js";
 
 async function loadUserPage(
   myRequest,
