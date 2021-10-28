@@ -1,7 +1,5 @@
 // SEARCH ID
 
-import { lightBox } from "./lightbox.js";
-
 async function loadUserPage(
   myRequest,
   listOfPhotographers,
@@ -202,7 +200,6 @@ async function loadUserPage(
       });
     }
   });
-  lightBox();
 }
 
 export { loadUserPage };
