@@ -32,11 +32,9 @@ header {
   }
 }
 
-
 @media screen and (max-width: 1134px) {
-
   header {
-   flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .logo {
@@ -44,17 +42,16 @@ header {
     padding-right: 1rem;
     padding-left: 4rem;
   }
-  h1 {
+  .bannerTitle {
     order: 2;
     font-size: 24px;
     padding-right: 4rem;
-
   }
   .navigation {
     padding-top: 2rem;
     order: 3;
     width: 100%;
-    text-align: center;  
+    text-align: center;
   }
 }
 
@@ -72,7 +69,9 @@ header {
       margin-top: 0.3rem;
     }
   }
-
+  .bannerTitle {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 568px) {
@@ -83,8 +82,8 @@ header {
     }
   }
 
-  h1 {
+  .bannerTitle {
+    padding-right: 0;
     font-size: 14px;
   }
-
 }

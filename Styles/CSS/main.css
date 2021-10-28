@@ -181,11 +181,6 @@ h3 {
   font-size: 20px;
 }
 
-body {
-  height: 100%;
-  width: 100%;
-}
-
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,7 +256,7 @@ header {
     padding-right: 1rem;
     padding-left: 4rem;
   }
-  h1 {
+  .bannerTitle {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
@@ -299,6 +294,9 @@ header {
   .navigation__tag {
     margin-top: 0.3rem;
   }
+  .bannerTitle {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 568px) {
@@ -306,7 +304,8 @@ header {
     height: 70%;
     width: 70%;
   }
-  h1 {
+  .bannerTitle {
+    padding-right: 0;
     font-size: 14px;
   }
 }
@@ -480,10 +479,10 @@ header {
 }
 
 .userDetailImg__img {
-  -o-object-fit: cover;
-     object-fit: cover;
   width: 200px;
   height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -505,6 +504,14 @@ header {
   padding-bottom: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+video {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .userHeader {
@@ -577,14 +584,6 @@ header {
   padding-right: 2rem;
   width: 350px;
   height: 350px;
-}
-
-video {
-  width: 350px;
-  height: 350px;
-  border-radius: 5px;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .footerPhoto {
@@ -771,6 +770,9 @@ video {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .modal-content {
@@ -781,6 +783,7 @@ video {
   background-color: #fefefe;
   max-height: 100%;
   margin: 3rem;
+  vertical-align: middle;
 }
 
 .closeModal {
@@ -824,7 +827,7 @@ video {
   cursor: pointer;
   position: absolute;
   width: auto;
-  top: 20rem;
+  top: 40%;
   padding: 1rem;
   color: #901c1c;
   font-weight: bold;
@@ -858,5 +861,74 @@ video {
   font-weight: 400;
   line-height: 31px;
   padding-top: 1rem;
+}
+
+@media screen and (max-width: 1134px) {
+  .logo {
+    padding: 0;
+  }
+  .userPage--contact {
+    position: fixed;
+    left: 50%;
+    margin-left: -85px;
+    bottom: 5%;
+    padding: 0;
+  }
+  .openContact {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 1019px) {
+  .userWrap {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .photo {
+    width: 100%;
+  }
+  .video {
+    width: 100%;
+  }
+  .imgMin {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+  }
+  .banner h1 {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .userDetailImg__img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 671px) {
+  .userDetailImg__img {
+    width: 100px;
+    height: 100px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  .banner h1 {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .userDetailImg {
+    height: 120px;
+  }
+  .banner h1 {
+    font-size: 25px;
+    width: 300px;
+  }
+  .contactSection {
+    display: none;
+  }
 }
 /*# sourceMappingURL=main.css.map */

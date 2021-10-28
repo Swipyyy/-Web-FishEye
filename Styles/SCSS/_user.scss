@@ -57,9 +57,9 @@
 .userDetailImg {
   align-self: flex-end;
   &__img {
-    object-fit: cover;
     width: 200px;
     height: 200px;
+    object-fit: cover;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -80,6 +80,13 @@
   padding-bottom: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+video {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  object-fit: cover;
 }
 
 .userHeader {
@@ -137,13 +144,6 @@
   padding-right: 2rem;
   width: 350px;
   height: 350px;
-}
-
-video {
-  width: 350px;
-  height: 350px;
-  border-radius: 5px;
-  object-fit: cover;
 }
 
 .footerPhoto {
@@ -290,6 +290,7 @@ video {
   overflow: auto;
   background-color: #fefefe;
   justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
@@ -298,6 +299,7 @@ video {
   background-color: #fefefe;
   max-height: 100%;
   margin: 3rem;
+  vertical-align: middle;
 }
 
 .closeModal {
@@ -333,7 +335,7 @@ video {
   cursor: pointer;
   position: absolute;
   width: auto;
-  top: 20rem;
+  top: 40%;
   padding: 1rem;
   color: $bordeaux;
   font-weight: bold;
@@ -362,4 +364,82 @@ video {
   font-weight: 400;
   line-height: 31px;
   padding-top: 1rem;
+}
+
+@media screen and (max-width: 1134px) {
+  .logo {
+    padding: 0;
+  }
+
+  .userPage {
+    &--contact {
+      position: fixed;
+      left: 50%;
+      margin-left: -85px;
+      bottom: 5%;
+      padding: 0;
+    }
+  }
+
+  .openContact {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 1019px) {
+  .userWrap {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .photo {
+    width: 100%;
+  }
+  .video {
+    width: 100%;
+  }
+  .imgMin {
+    object-fit: cover;
+    width: 100%;
+  }
+  .banner h1 {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .userDetailImg {
+    &__img {
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+
+@media screen and (max-width: 671px) {
+  .userDetailImg {
+    &__img {
+      width: 100px;
+      height: 100px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .banner h1 {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .userDetailImg {
+    height: 120px;
+  }
+
+  .banner h1 {
+    font-size: 25px;
+    width: 300px;
+  }
+
+  .contactSection {
+    display: none;
+  }
 }
