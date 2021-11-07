@@ -896,7 +896,7 @@ video {
     width: 100%;
   }
   .banner h1 {
-    width: 600px;
+    max-width: 600px;
   }
 }
 
