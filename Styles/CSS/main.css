@@ -901,9 +901,27 @@ video {
 }
 
 @media screen and (max-width: 750px) {
+  .userDetailImg {
+    -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
+        align-self: auto;
+    padding-top: 1rem;
+  }
   .userDetailImg__img {
     width: 130px;
     height: 130px;
+  }
+  .banner h1 {
+    width: auto;
+  }
+  .banner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
@@ -911,8 +929,6 @@ video {
   .userDetailImg__img {
     width: 100px;
     height: 100px;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
   }
   .banner h1 {
     font-size: 35px;
@@ -920,15 +936,17 @@ video {
 }
 
 @media screen and (max-width: 490px) {
-  .userDetailImg {
-    height: 120px;
-  }
   .banner h1 {
-    font-size: 25px;
-    width: 300px;
+    font-size: 20px;
   }
   .contactSection {
     display: none;
+  }
+  .userPage__city {
+    font-size: 18px;
+  }
+  .userPage__citation {
+    font-size: 18px;
   }
 }
 /*# sourceMappingURL=main.css.map */

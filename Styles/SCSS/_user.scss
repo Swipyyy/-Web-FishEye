@@ -408,10 +408,20 @@ video {
 
 @media screen and (max-width: 750px) {
   .userDetailImg {
+    align-self: auto;
+    padding-top: 1rem;
     &__img {
       width: 130px;
       height: 130px;
     }
+  }
+  .banner h1 {
+    width: auto;
+  }
+
+  .banner {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -420,7 +430,6 @@ video {
     &__img {
       width: 100px;
       height: 100px;
-      transform: translateY(-50%);
     }
   }
 
@@ -430,16 +439,20 @@ video {
 }
 
 @media screen and (max-width: 490px) {
-  .userDetailImg {
-    height: 120px;
-  }
-
   .banner h1 {
-    font-size: 25px;
-    width: 300px;
+    font-size: 20px;
   }
 
   .contactSection {
     display: none;
+  }
+
+  .userPage {
+    &__city {
+      font-size: 18px;
+    }
+    &__citation {
+      font-size: 18px;
+    }
   }
 }
