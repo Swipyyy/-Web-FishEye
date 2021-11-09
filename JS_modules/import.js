@@ -16,10 +16,11 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
     );
   }
   let userUrl = window.location.search;
-  const urlParams = new URLSearchParams(userUrl);
+  const urlParams = new URLSearchParams(userUrl); // CHECK TAG IN URL
   let tagUser = urlParams.get("tag");
 
   if (tagUser === null) {
+    // INJECT ALL PHOTOGRAPHERS
     listOfPhotographers.forEach((photographers) => {
       document.querySelector("#insertUsers").insertAdjacentHTML(
         "afterbegin",
@@ -49,6 +50,7 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
       );
       let idNow = photographers.id;
       photographers.tags.forEach((element) => {
+        // INJECT TAG
         document.
           querySelector("#tag" + idNow).
           insertAdjacentHTML(
@@ -63,11 +65,12 @@ async function loadData(myRequest, listOfPhotographers, utilisateur) {
     listOfPhotographers.forEach((elt) => {
       let search = elt.tags;
       if (search.find((element) =>
-        element == tagUser)) {
+element == tagUser)) {
         filterArray.push(elt.id);
       }
     });
     listOfPhotographers.forEach((photographers) => {
+      // INJECT HTML WITH TAGS
       if (filterArray.includes(photographers.id)) {
         document.querySelector("#insertUsers").insertAdjacentHTML(
           "afterbegin",

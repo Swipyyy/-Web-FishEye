@@ -1,5 +1,4 @@
-// SEARCH ID
-
+// Inject Page Function
 async function loadUserPage(
   myRequest,
   listOfPhotographers,
@@ -57,7 +56,7 @@ async function loadUserPage(
       injectUserFilter();
       injectContactForm(photographers);
       injectContact(photographers);
-      const modalOpen = document.querySelectorAll(".openContact");
+      const modalOpen = document.querySelectorAll(".openContact"); // CONTACT MODAL
       const modalBg = document.querySelector(".bground");
       const closeModalBtn = document.querySelectorAll("#close");
       const sendButton = document.querySelectorAll("#button");
@@ -92,14 +91,14 @@ async function loadUserPage(
           let last = document.getElementById("last").value;
           let email = document.getElementById("email").value;
           let textMessage = document.getElementById("textMessage").value;
-          console.log(first, last, email, textMessage);
+          console.log(first, last, email, textMessage); // OUTPUT
           modalBg.style.display = "none";
         })
       );
     }
   });
   listOfMedias.sort((a, b) => {
-    return a.likes - b.likes;
+    return a.likes - b.likes; // LIKES FILTER
   });
 
   listOfMedias.forEach((medias) => {
@@ -123,7 +122,7 @@ async function loadUserPage(
   });
   injectLightBoxControls();
 
-  let selectItem = document.querySelector("#sortByList");
+  let selectItem = document.querySelector("#sortByList"); // SELECT FILTER
   selectItem.addEventListener("change", function () {
     var index = selectItem.selectedIndex;
     document.getElementById("photoSection").innerHTML = "";

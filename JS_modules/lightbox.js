@@ -1,11 +1,11 @@
 function lightBox() {
-  let slideIndex = 1;
+  let slideIndex = 1; // INITIALIZE THE ROTATION OF SLIDES
   showSlides(slideIndex);
   function showSlides(n) {
     let i = 0;
     let slides = document.getElementsByClassName("mySlides");
     if (slideIndex < 1) {
-      slideIndex = slides.length;
+      slideIndex = slides.length; // ROTATION
     }
     if (slideIndex > slides.length) {
       slideIndex = 1;
@@ -20,7 +20,7 @@ function lightBox() {
       slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "flex";
-    document.onkeydown = checkKey;
+    document.onkeydown = checkKey; // KEYBOARD CONTROL
     function checkKey(e) {
       e = e || window.event;
 
@@ -34,11 +34,11 @@ function lightBox() {
     }
   }
 
-  let lightBoxImg = document.querySelectorAll(".imgMin");
+  let lightBoxImg = document.querySelectorAll(".imgMin"); // OPEN LIGHTBOX
   let c = 1;
   lightBoxImg.forEach(function (item) {
     item.setAttribute("id", c);
-    item.addEventListener("click", function test() {
+    item.addEventListener("click", function modalRotation() {
       document.getElementById("myModal").style.display = "flex";
       let m = item.id;
       slideIndex = m;
@@ -46,7 +46,7 @@ function lightBox() {
     });
     c++;
   });
-  let plusSlides = document.getElementById("plusSlides");
+  let plusSlides = document.getElementById("plusSlides"); // LIGHTBOX CONTROLS
   plusSlides.addEventListener("click", function plusSl() {
     showSlides(slideIndex++);
   });

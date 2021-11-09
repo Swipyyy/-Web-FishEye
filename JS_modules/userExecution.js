@@ -1,3 +1,4 @@
+// USER MAIN FILE - EXECUTED AT OPENING
 import {
   injectContact,
   injectContactForm,
@@ -18,10 +19,11 @@ import { utilisateur } from "./userClass.js";
 
 async function letsgo() {
   var userUrl = window.location.search;
-  const urlParams = new URLSearchParams(userUrl);
+  const urlParams = new URLSearchParams(userUrl); // SEARCH ID
   let idUser = urlParams.get("id");
 
   await loadUserPage(
+    // SEE USERPAGE.JS
     myRequest,
     listOfPhotographers,
     listOfMedias,

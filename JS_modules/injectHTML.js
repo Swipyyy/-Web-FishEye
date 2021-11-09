@@ -138,7 +138,7 @@ function injectLightBoxControls() {
   );
 }
 
-// CONTACT BUTTON
+// CONTACT PRICE
 function injectContact(photographers) {
   document.getElementById("contactSection").innerHTML = `
   <div class="contactSection--like">
