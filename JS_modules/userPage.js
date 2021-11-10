@@ -113,11 +113,22 @@ async function loadUserPage(
         injectLightboxVideo(medias); // INJECTS VIDEOS
       }
       let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
+      let like = document.getElementById("nbLike" + medias.id);
+      let numberlike = like.innerHTML;
+      let likeOk = false;
       likeCount.addEventListener("click", function incrementer() {
-        let like = document.getElementById("nbLike" + medias.id);
-        let numberlike = like.innerHTML;
-        numberlike++;
-        like.innerHTML = numberlike;
+        console.log(likeOk);
+        if (likeOk == false) {
+          numberlike++;
+          like.innerHTML = numberlike;
+          likeOk = true;
+          compteurLike();
+        } else if (likeOk == true) {
+          numberlike--;
+          like.innerHTML = numberlike;
+          likeOk = false;
+          compteurLike();
+        }
       });
     }
   });
@@ -144,9 +155,20 @@ async function loadUserPage(
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
           let numberlike = like.innerHTML;
+          let likeOk = false;
           likeCount.addEventListener("click", function incrementer() {
-            numberlike++;
-            like.innerHTML = numberlike;
+            console.log(likeOk);
+            if (likeOk == false) {
+              numberlike++;
+              like.innerHTML = numberlike;
+              likeOk = true;
+              compteurLike();
+            } else if (likeOk == true) {
+              numberlike--;
+              like.innerHTML = numberlike;
+              likeOk = false;
+              compteurLike();
+            }
           });
         }
       });
@@ -168,9 +190,20 @@ async function loadUserPage(
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
           let numberlike = like.innerHTML;
+          let likeOk = false;
           likeCount.addEventListener("click", function incrementer() {
-            numberlike++;
-            like.innerHTML = numberlike;
+            console.log(likeOk);
+            if (likeOk == false) {
+              numberlike++;
+              like.innerHTML = numberlike;
+              likeOk = true;
+              compteurLike();
+            } else if (likeOk == true) {
+              numberlike--;
+              like.innerHTML = numberlike;
+              likeOk = false;
+              compteurLike();
+            }
           });
         }
       });
@@ -192,14 +225,38 @@ async function loadUserPage(
           let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
           let like = document.getElementById("nbLike" + medias.id);
           let numberlike = like.innerHTML;
+          let likeOk = false;
           likeCount.addEventListener("click", function incrementer() {
-            numberlike++;
-            like.innerHTML = numberlike;
+            console.log(likeOk);
+            if (likeOk == false) {
+              numberlike++;
+              like.innerHTML = numberlike;
+              likeOk = true;
+              compteurLike();
+            } else if (likeOk == true) {
+              numberlike--;
+              like.innerHTML = numberlike;
+              likeOk = false;
+              compteurLike();
+            }
           });
         }
       });
     }
   });
+  // TOTAL LIKES
+  function compteurLike() {
+    let like = document.querySelectorAll(".nbLike");
+    let compteur = 0;
+    console.log(like);
+    for (let i = 0; i < like.length; i++) {
+      let numberLike = like[i].innerHTML;
+      let finalCount = parseInt(numberLike, Number);
+      compteur += finalCount;
+    }
+    document.getElementById("nbTotalLike").innerHTML = compteur;
+  }
+  compteurLike();
 }
 
 export { loadUserPage };

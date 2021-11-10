@@ -142,7 +142,7 @@ function injectLightBoxControls() {
 function injectContact(photographers) {
   document.getElementById("contactSection").innerHTML = `
   <div class="contactSection--like">
-  <p class ="contactSection__nbLike">297 081</p>
+  <p class ="contactSection__nbLike" id="nbTotalLike"></p>
   <i class="fas fa-heart"></i>
   </div>
   <div class="contactSection__price">${photographers.price}€ / jour</div>`;
