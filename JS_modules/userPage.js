@@ -15,7 +15,7 @@ async function loadUserPage(
   injectLightBoxControls,
   injectContactForm,
   utilisateur,
-  medias
+  createMedia
 ) {
   const response = await fetch(myRequest);
   const importer = await response.json();
@@ -35,7 +35,7 @@ async function loadUserPage(
   }
   for (let p of importer.media) {
     listOfMedias.push(
-      new medias(
+      createMedia(
         p.id,
         p.photographerId,
         p.title,
@@ -49,6 +49,7 @@ async function loadUserPage(
       )
     );
   }
+  console.log(listOfMedias);
   listOfPhotographers.forEach((photographers) => {
     if (photographers.id == idUser) {
       injectUserBanner(photographers); // INJECT HTML (see JS file)
