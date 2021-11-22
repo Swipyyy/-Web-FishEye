@@ -1,5 +1,5 @@
 function lightBox() {
-  let slideIndex = 1; // INITIALIZE THE ROTATION OF SLIDES
+  let slideIndex = 0; // INITIALIZE THE ROTATION OF SLIDES
   showSlides(slideIndex);
   function showSlides(n) {
     let i = 0;

@@ -1,4 +1,7 @@
 // Inject Page Function
+
+import { lightBox } from "./lightbox.js";
+
 async function loadUserPage(
   myRequest,
   listOfPhotographers,
@@ -15,10 +18,13 @@ async function loadUserPage(
   injectLightBoxControls,
   injectContactForm,
   utilisateur,
-  createMedia
+  createImage
 ) {
   const response = await fetch(myRequest);
   const importer = await response.json();
+  importer.media.sort((a, b) => {
+    return b.likes - a.likes; // LIKES FILTER AT LOADING
+  });
   for (let p of importer.photographers) {
     listOfPhotographers.push(
       new utilisateur(
@@ -35,7 +41,7 @@ async function loadUserPage(
   }
   for (let p of importer.media) {
     listOfMedias.push(
-      createMedia(
+      createImage(
         p.id,
         p.photographerId,
         p.title,
@@ -45,7 +51,8 @@ async function loadUserPage(
         p.likes,
         p.date,
         p.price,
-        p.description
+        p.description,
+        idUser
       )
     );
   }
@@ -98,19 +105,19 @@ async function loadUserPage(
       );
     }
   });
+
   listOfMedias.sort((a, b) => {
-    return a.likes - b.likes; // LIKES FILTER
+    return a.likes - b.likes; // LIKES FILTER FOR LIGHTBOX
   });
 
   listOfMedias.forEach((medias) => {
     if (medias.photographerId == idUser) {
+      console.log(medias);
       if (medias.image) {
-        injectPics(medias);
-        injectLightbox(medias); // INJECT PICS
+        injectLightbox(medias);
       }
       if (medias.video) {
-        injectVideos(medias);
-        injectLightboxVideo(medias); // INJECTS VIDEOS
+        injectLightboxVideo(medias);
       }
       let likeCount = document.getElementById("like" + medias.id); // LIKE INCREMENT
       let like = document.getElementById("nbLike" + medias.id);
@@ -138,10 +145,12 @@ async function loadUserPage(
   selectItem.addEventListener("change", function () {
     var index = selectItem.selectedIndex;
     document.getElementById("photoSection").innerHTML = "";
+    document.getElementById("modal-content").innerHTML = "";
     if (index === 2) {
       listOfMedias.sort((b, a) => {
         return a.title.localeCompare(b.title); // TITLE FILTER
       });
+      injectLightBoxControls();
       listOfMedias.forEach((medias) => {
         if (medias.photographerId == idUser) {
           if (medias.image) {
@@ -172,11 +181,13 @@ async function loadUserPage(
           });
         }
       });
+      lightBox();
     }
     if (index === 1) {
       listOfMedias.sort((a, b) => {
         return new Date(a.date) - new Date(b.date); // DATE FILTER
       });
+      injectLightBoxControls();
       listOfMedias.forEach((medias) => {
         if (medias.photographerId == idUser) {
           if (medias.image) {
@@ -207,11 +218,13 @@ async function loadUserPage(
           });
         }
       });
+      lightBox();
     }
     if (index === 0) {
       listOfMedias.sort((a, b) => {
         return a.likes - b.likes; // LIKE FILTER
       });
+      injectLightBoxControls();
       listOfMedias.forEach((medias) => {
         if (medias.photographerId == idUser) {
           if (medias.image) {
@@ -242,6 +255,7 @@ async function loadUserPage(
           });
         }
       });
+      lightBox();
     }
   });
   // TOTAL LIKES

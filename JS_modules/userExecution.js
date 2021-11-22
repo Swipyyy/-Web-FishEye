@@ -12,7 +12,7 @@ import {
   injectVideos
 } from "./injectHTML.js";
 import { listOfMedias, listOfPhotographers, myRequest } from "./constante.js";
-import { createMedia } from "./mediaFactory.js";
+import { createImage } from "./mediaFactory.js";
 import { lightBox } from "./lightbox.js";
 import { loadUserPage } from "./userPage.js";
 import { utilisateur } from "./userClass.js";
@@ -39,7 +39,7 @@ async function letsgo() {
     injectLightBoxControls,
     injectContactForm,
     utilisateur,
-    createMedia
+    createImage
   );
   lightBox();
 }

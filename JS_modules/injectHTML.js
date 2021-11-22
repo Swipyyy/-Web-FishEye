@@ -2,6 +2,7 @@
  * HTML INJECTION IN USER PAGE
  * BANNER
  */
+
 function injectUserBanner(photographers) {
   document.getElementById("banner").innerHTML = `
   <!-- BANNIERE PHOTOGRAPHE -->
