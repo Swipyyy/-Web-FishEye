@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // Inject Page Function
 
 import { lightBox } from "./lightbox.js";
@@ -99,8 +100,74 @@ async function loadUserPage(
           let last = document.getElementById("last").value;
           let email = document.getElementById("email").value;
           let textMessage = document.getElementById("textMessage").value;
-          console.log(first, last, email, textMessage); // OUTPUT
-          modalBg.style.display = "none";
+          const error = {
+            "emailN": document.createElement("span"),
+            "firstN": document.createElement("span"),
+            "lastN": document.createElement("span"),
+            "messageN": document.createElement("span")
+          };
+          // eslint-disable-next-line require-unicode-regexp
+          let letters = /^[a-zA-Z_-]+$/;
+          // eslint-disable-next-line require-unicode-regexp
+          let mailTest = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+          let finalError = 0;
+          // Prénom Vide
+          if (first == "") {
+            finalError += 1;
+            document.getElementById("errorFirst").appendChild(error.firstN); // Liaison au DIV parent
+            error.firstN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem"; // Style du SPAN
+            error.firstN.textContent = "Merci de compléter ce champ"; // TextNode avec message d'alerte
+          } else if (letters.test(first) == false) {
+            finalError += 1;
+            document.getElementById("errorFirst").appendChild(error.firstN);
+            error.firstN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.firstN.textContent = "Merci d'indiquer un prénom valide";
+
+            // Nom
+          } else if (last == "") {
+            finalError += 1;
+            document.getElementById("errorLast").appendChild(error.lastN);
+            error.lastN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.lastN.textContent = "Merci de compléter ce champ";
+          } else if (letters.test(last) == false) {
+            finalError += 1;
+            document.getElementById("errorFirst").appendChild(error.lastN);
+            error.lastN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.lastN.textContent = "Merci d'indiquer un nom valide";
+
+            // Email
+          } else if (email == "") {
+            finalError += 1;
+            document.getElementById("errorMail").appendChild(error.emailN);
+            error.emailN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.emailN.textContent =
+              "Merci de saisir une adresse mail valide";
+          } else if (mailTest.test(email) == false) {
+            finalError += 1;
+            document.getElementById("errorMail").appendChild(error.emailN);
+            error.emailN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.emailN.textContent =
+              "Merci de saisir une adresse mail valide";
+
+            // Message
+          } else if (textMessage == "") {
+            finalError += 1;
+            document.getElementById("message").appendChild(error.messageN);
+            error.messageN.style.cssText =
+              "display: block; color:#B81C0C; font-size:0.9rem; padding-top: 0.2rem; padding-bottom: 0.5rem";
+            error.messageN.textContent = "Merci de compléter ce champ";
+
+            // Envoi
+          } else if (finalError == 0) {
+            console.log(first, last, email, textMessage);
+            modalBg.style.display = "none";
+          }
         })
       );
     }
